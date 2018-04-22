@@ -185,5 +185,33 @@ class User extends CI_Controller {
 		}
 		
 	}
+
+	public function myevents() {
+		
+		// create the data object
+		$data = new stdClass();
+		
+		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+			
+			$identity = $_SESSION['user_id'];
+			$events['output'] = $this->user_model->get_event($identity);
+			
+
+
+
+			// user logout ok
+			$this->load->view('header');
+			$this->load->view('user/events', $events);
+			$this->load->view('footer');
+			
+		} else {
+			
+			// there user was not logged in, we cannot logged him out,
+			// redirect him to site root
+			redirect('/');
+			
+		}
+		
+	}
 	
 }

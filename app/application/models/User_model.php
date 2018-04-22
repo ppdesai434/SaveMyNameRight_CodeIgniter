@@ -121,4 +121,15 @@ class User_model extends CI_Model {
 		
 	}
 	
+	public function get_event($userid) {
+		
+		$this->db->select('*');
+		$this->db->from('event');
+		$this->db->where('createdby', $userid);
+
+		$output = $this->db->get(); 
+		return $output;
+		
+	}
+	
 }

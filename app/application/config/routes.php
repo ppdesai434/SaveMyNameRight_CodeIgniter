@@ -52,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['register'] = 'user/register';
 $route['login'] = 'user/login';
 $route['logout'] = 'user/logout';
+$route['myevents'] = 'user/myevents';
 
 $route['default_controller'] = 'forum';
 $route['404_override'] = '';
