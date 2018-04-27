@@ -35,7 +35,7 @@
 					<a class="navbar-brand" href="<?= base_url() ?>">Say My Name Right!</a>
 					<?php if (isset($_SESSION['username']) && $_SESSION['logged_in'] === true) : ?>
 						<a class="navbar-brand" href="<?= base_url('myevents') ?>">My Events</a>
-						<a class="navbar-brand" href="<?= base_url('conference') ?>">My Conferences</a>
+						<a class="navbar-brand" href="<?= base_url('myConferences') ?>">My Conferences</a>
 						<a class="navbar-brand" href="<?= base_url('myOrganizations') ?>">My Organizations</a>
 						<a class="navbar-brand" href="<?= base_url('university') ?>">My University</a>
 					<?php endif; ?>
