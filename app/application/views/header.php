@@ -31,7 +31,13 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="<?= base_url() ?>">Site title</a>
+					<a class="navbar-brand" href="<?= base_url() ?>">Say My Name Right!</a>
+					<?php if (isset($_SESSION['username']) && $_SESSION['logged_in'] === true) : ?>
+						<a class="navbar-brand" href="<?= base_url('myevents') ?>">My Events</a>
+						<a class="navbar-brand" href="<?= base_url('conference') ?>">My Conferences</a>
+						<a class="navbar-brand" href="<?= base_url('myOrganizations') ?>">My Organizations</a>
+						<a class="navbar-brand" href="<?= base_url('university') ?>">My University</a>
+					<?php endif; ?>
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">

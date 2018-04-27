@@ -54,6 +54,11 @@ $route['login'] = 'user/login';
 $route['logout'] = 'user/logout';
 $route['myevents'] = 'user/myevents';
 
-$route['default_controller'] = 'forum';
+$route['myOrganizations'] = 'organization/myorganization';
+$route['newOrganization'] = 'organization/neworganization';
+$route['editOrganization/(:any)'] = 'organization/editorganization/$1';
+$route['deleteOrganization/(:any)'] = 'organization/deleteorganization/$1';
+
+$route['default_controller'] = 'user/login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
