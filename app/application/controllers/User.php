@@ -54,7 +54,8 @@ class User extends CI_Controller {
 		if ($this->form_validation->run() === false) {
 			
 			// validation not ok, send validation errors to the view
-			$this->load->view('header');
+			$headData['title']='Register';
+			$this->load->view('header',$headData);
 			$this->load->view('user/register/register', $data);
 			$this->load->view('footer');
 			
@@ -68,7 +69,8 @@ class User extends CI_Controller {
 			if ($this->user_model->create_user($username, $email, $password)) {
 				
 				// user creation ok
-				$this->load->view('header');
+				$headData['title']='Register';
+				$this->load->view('header',$headData);
 				$this->load->view('user/register/register_success', $data);
 				$this->load->view('footer');
 				
@@ -78,7 +80,8 @@ class User extends CI_Controller {
 				$data->error = 'There was a problem creating your new account. Please try again.';
 				
 				// send error to the view
-				$this->load->view('header');
+				$headData['title']='Register';
+				$this->load->view('header',$headData);
 				$this->load->view('user/register/register', $data);
 				$this->load->view('footer');
 				
@@ -110,7 +113,8 @@ class User extends CI_Controller {
 		if ($this->form_validation->run() == false) {
 			
 			// validation not ok, send validation errors to the view
-			$this->load->view('header');
+			$headData['title']='Login';
+			$this->load->view('header',$headData);
 			$this->load->view('user/login/login');
 			$this->load->view('footer');
 			
@@ -133,7 +137,8 @@ class User extends CI_Controller {
 				$_SESSION['is_admin']     = (bool)$user->is_admin;
 				
 				// user login ok
-				$this->load->view('header');
+				$headData['title']='Home';
+				$this->load->view('header',$headData);
 				$this->load->view('user/login/login_success', $data);
 				$this->load->view('footer');
 				
@@ -143,7 +148,8 @@ class User extends CI_Controller {
 				$data->error = 'Wrong username or password.';
 				
 				// send error to the view
-				$this->load->view('header');
+				$headData['title']='Login';
+				$this->load->view('header',$headData);
 				$this->load->view('user/login/login', $data);
 				$this->load->view('footer');
 				
@@ -172,7 +178,8 @@ class User extends CI_Controller {
 			}
 			
 			// user logout ok
-			$this->load->view('header');
+			$headData['title']='Logout';
+			$this->load->view('header',$headData);
 			$this->load->view('user/logout/logout_success', $data);
 			$this->load->view('footer');
 			

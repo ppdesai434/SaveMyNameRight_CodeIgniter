@@ -13,8 +13,8 @@
 						echo "<table class='table'>";
 					    echo "<tr><th>ID</th>";
 					    echo "<th>Name</th>";
-					    echo "<th>Edit</th>";
-					    echo "<th>Delete</th>";
+					    echo "<th colspan='2' align='center'>Actions</th>";
+					    
 					    echo "</tr>";
 					  // Fetch one and one row
 					    
