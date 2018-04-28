@@ -450,8 +450,13 @@
                     echo form_error('city');
                     echo"</td></tr>";
                     
-                    echo"<tr><td colspan='2' align='center'>";
-                    echo form_submit('submit', 'Submit', "class='submit'"); 
+                    echo"<tr><td colspan='2' align='center'>";?>
+                    <?php if (empty($conf['id'])):?>
+					<button type="submit" class="btn">Create</button>
+					<?php  else : ?>
+					<button type="submit" class="btn">Update</button>
+					<?php endif;?>
+					<?php 
                     echo"</td></tr>";
                     echo form_hidden('createdby',$_SESSION['user_id']);
                     echo"</table>";
