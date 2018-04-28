@@ -33,23 +33,41 @@
 						<span class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="<?= base_url() ?>">Say My Name Right!</a>
-					<?php if (isset($_SESSION['username']) && $_SESSION['logged_in'] === true) : ?>
-						<a class="navbar-brand" href="<?= base_url('myevents') ?>">My Events</a>
-						<a class="navbar-brand" href="<?= base_url('myConferences') ?>">My Conferences</a>
-						<a class="navbar-brand" href="<?= base_url('myOrganizations') ?>">My Organizations</a>
-						<a class="navbar-brand" href="<?= base_url('university') ?>">My University</a>
-					<?php endif; ?>
 				</div>
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right">
-						<?php if (isset($_SESSION['username']) && $_SESSION['logged_in'] === true) : ?>
+					
+						
+					
+					<?php if (isset($_SESSION['username']) && $_SESSION['logged_in'] === true) : ?>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					      <ul class="nav navbar-nav">
+					       
+					        <li><a href="<?= base_url('myevents') ?>">Events</a></li>
+					        <li><a href="<?= base_url('myConferences') ?>">Conferences</a></li>
+					        <li><a href="<?= base_url('myOrganizations') ?>">Organizations</a></li>
+					        <li class="dropdown">
+					          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">University <span class="caret"></span></a>
+					          <ul class="dropdown-menu">
+					            <li><a href="<?= base_url('myUniversity') ?>">My Universities</a></li>
+					            <li><a href="<?= base_url('myColleges') ?>">My Colleges</a></li>
+					           <li><a href="<?= base_url('myCourses') ?>">My Courses</a></li>
+					            
+					          </ul>
+					        </li>
+					      </ul>
+					      <ul class="nav navbar-nav navbar-right">
 							<li><a href="<?= base_url('logout') ?>">Logout</a></li>
-						<?php else : ?>
+						
+					</ul>
+				</div>
+				<?php else : ?>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
 							<li><a href="<?= base_url('register') ?>">Register</a></li>
 							<li><a href="<?= base_url('login') ?>">Login</a></li>
+						</ul>
+					</div>
 						<?php endif; ?>
-					</ul>
-				</div><!-- .navbar-collapse -->
+				
 			</div><!-- .container-fluid -->
 		</nav><!-- .navbar -->
 	</header><!-- #site-header -->

@@ -62,6 +62,21 @@ $route['deleteOrganization/(:any)'] = 'organization/deleteorganization/$1';
 $route['myConferences'] = 'conference/myconference';
 $route['newConference'] = 'conference/newconference';
 
+$route['myUniversity'] = 'university/myuniversity';
+$route['newUniversity'] = 'university/newuniversity';
+$route['editUniversity/(:any)'] = 'university/edituniversity/$1';
+$route['deleteUniversity/(:any)'] = 'university/deleteuniversity/$1';
+
+$route['myColleges'] = 'college/mycollege';
+$route['newCollege'] = 'college/newcollege';
+$route['editCollege/(:any)'] = 'college/editcollege/$1';
+$route['deleteCollege/(:any)'] = 'college/deletecollege/$1';
+
+$route['myCourses'] = 'course/mycourse';
+$route['newCourse'] = 'course/newcourse';
+$route['editCourse/(:any)'] = 'course/editcourse/$1';
+$route['deleteCourse/(:any)'] = 'course/deletecourse/$1';
+
 $route['default_controller'] = 'user/login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
