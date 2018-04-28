@@ -9,16 +9,20 @@
 			<h1>Edit Conference</h1>
 			<?php endif; ?>
 			<?php
+				
 			if (!isset($conf['id'])){
 				$conf['id']='';
 				$conf['name']='';
 				$conf['startdatetime']='';
 				$conf['enddatetime']='';
-				$conf['address']='';
+				$conf['Address']='';
 				$conf['City']='';
 				$conf['State']='';
 				$conf['Country']='';
 				$conf['zip']='';
+				$startdate='';
+				$enddate='';
+
 			}
                     echo form_open('conference/newconference');
                     echo"<table class='table'>";
@@ -41,38 +45,41 @@
                     echo form_error('name');
                     echo"</td></tr>";
 
-
+					if (isset($conf['id'])){
+                    $startdate=date("Y-m-d\TH:i:s", strtotime($conf['startdatetime']));
+                	}
                     echo"<tr><td>";
-					echo form_label('Description:');
+					echo form_label('Start Date and time:');
 					echo "</td><td colspan='2'>";
-                    $data_desc = array(
-                        'name' => 'desc',
-                        'id' => 'desc',
+                    $data_start = array(
+                        'name' => 'startdatetime',
+                        'id' => 'startdatetime',
                         'class'=>'input-group',
-                        'rows'=>3,
-                        'cols'=>40,
-                        'value'=>$conf['description']
+                        'type' => 'datetime-local',
+                        'value'=>$startdate
                     );
 
-                    echo form_textarea($data_desc);
+                    echo form_input($data_start);
 
                     echo"</td></tr>";
 
+                   	if (isset($conf['id'])){
+                    $enddate=date("Y-m-d\TH:i:s", strtotime($conf['enddatetime']));
+                	}
                     echo"<tr><td>";
-					echo form_label('No of People:');
+					echo form_label('End Date and time:');
 					echo "</td><td>";
-                    $data_nop = array(
-                        'name' => 'noofpeople',
-                        'id' => 'noofpeople',
-                        'type' => 'text',
-                        'size'=>'10',
+                    $data_end = array(
+                        'name' => 'enddatetime',
+                        'id' => 'enddatetime',
+                        'type' => 'datetime-local',
                         'class'=>'input-group',
-                        'value'=>$conf['noofpeople']
+                        'value'=> $enddate
                     );
 
-                    echo form_input($data_nop);
+                    echo form_input($data_end);
                     echo "</td><td>";
-                    echo form_error('noofpeople');
+                    echo form_error('enddatetime');
                     echo"</td></tr>";
 
                     echo"<tr><td>";
@@ -84,7 +91,7 @@
                         'class'=>'input-group',
                         'rows'=>3,
                         'cols'=>40,
-                        'value'=>$conf['address']
+                        'value'=>$conf['Address']
 
                         
                     );

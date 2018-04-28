@@ -3,8 +3,8 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="page-header">
-				<h1><?=$title?></h1>
-				<h3><a class='btn-link' href="<?= base_url('newConference') ?>">Create Conference</a></h3>
+				<h1>My Events</h1>
+				<h3><a class='btn-link' href="<?= base_url('newEvent') ?>">Create Event</a></h3>
 				<?=$message?>
  			</div>
 
@@ -17,14 +17,14 @@
 					    echo "</tr>";
 					  // Fetch one and one row
 					    
-					  		foreach ($conf as $temp)
+					  		foreach ($event as $temp)
 						    {
 							    echo "<tr>";
 							    echo "<td>". $temp['id']. "</td>";
 							    echo "<td>". $temp['name']. "</td>";
 							    ?>
-							    <td><a href="<?php echo base_url() ?>editConference/<?php echo $temp['id'] ?>">Edit</a>
-							    <td><a href="<?php echo base_url() ?>deleteConference/<?php echo $temp['id'] ?>">Delete</a>
+							    <td><a href="<?php echo base_url() ?>editEvent/<?php echo $temp['id'] ?>">Edit</a>
+							    <td><a href="<?php echo base_url() ?>deleteEvent/<?php echo $temp['id'] ?>">Delete</a>
 							    <?php
 							    
 							    echo "</tr>";

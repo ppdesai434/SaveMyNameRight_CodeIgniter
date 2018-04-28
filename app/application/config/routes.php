@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['register'] = 'user/register';
 $route['login'] = 'user/login';
 $route['logout'] = 'user/logout';
-$route['myevents'] = 'user/myevents';
+
 
 $route['myOrganizations'] = 'organization/myorganization';
 $route['newOrganization'] = 'organization/neworganization';
@@ -61,6 +61,8 @@ $route['deleteOrganization/(:any)'] = 'organization/deleteorganization/$1';
 
 $route['myConferences'] = 'conference/myconference';
 $route['newConference'] = 'conference/newconference';
+$route['editConference/(:any)'] = 'conference/editconference/$1';
+$route['deleteConference/(:any)'] = 'conference/deleteconference/$1';
 
 $route['myUniversity'] = 'university/myuniversity';
 $route['newUniversity'] = 'university/newuniversity';
@@ -76,6 +78,11 @@ $route['myCourses'] = 'course/mycourse';
 $route['newCourse'] = 'course/newcourse';
 $route['editCourse/(:any)'] = 'course/editcourse/$1';
 $route['deleteCourse/(:any)'] = 'course/deletecourse/$1';
+
+$route['myEvents'] = 'event/myevent';
+$route['newEvent'] = 'event/newevent';
+$route['editEvent/(:any)'] = 'event/editevent/$1';
+$route['deleteEvent/(:any)'] = 'event/deleteevent/$1';
 
 $route['default_controller'] = 'user/login';
 $route['404_override'] = '';

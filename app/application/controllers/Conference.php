@@ -8,7 +8,7 @@ class Conference extends CI_Controller {
 	$data['title']='My Conference';
 	$data['conf']= $this->conf_model->get_conf();
 	$data['message']='';
-	$this->load->view('header');
+	$this->load->view('header',$data);
 	$this->load->view('conference/myConferences',$data);
 	$this->load->view('footer');
 	}
@@ -19,8 +19,8 @@ class Conference extends CI_Controller {
 	$this->load->library('form_validation');
 // set validation rules
 
-		$this->form_validation->set_rules('name', 'Name', 'trim|required|alpha_numeric|min_length[4]');
-		$this->form_validation->set_rules('noofpeople', 'No. of People', 'numeric');
+		$this->form_validation->set_rules('name', 'Name', 'callback_customNameValidation');
+		$this->form_validation->set_message('customNameValidation','Name is not valid!');
 		$this->form_validation->set_rules('address', 'Address', 'trim|required');
 		$this->form_validation->set_rules('city', 'City', 'trim|required');
 		$this->form_validation->set_rules('zip', 'Zip', 'alpha_numeric');
@@ -28,8 +28,8 @@ class Conference extends CI_Controller {
 			$data['conf']='';
 			
 			// validation not ok, send validation errors to the view
-			
-			$this->load->view('header');
+			$data['title']='Create Conference';
+			$this->load->view('header',$data);
 			$this->load->view('conference/newConference',$data);
 			$this->load->view('footer');
 			
@@ -38,8 +38,8 @@ class Conference extends CI_Controller {
 			$value = array(
             
             'name' => $this->input->post('name'),
-            'description' => $this->input->post('desc'),
-            'noofpeople' => $this->input->post('noofpeople'),
+            'startdatetime' => $this->input->post('startdatetime'),
+            'enddatetime' => $this->input->post('enddatetime'),
             'address'=> $this->input->post('address'),
             'City' =>  $this->input->post('city'),
             'State' => $this->input->post('state'),
@@ -56,30 +56,48 @@ class Conference extends CI_Controller {
 		else{
 			
 			$value['id']=$this->input->post('id');
-			print_r($value);
+			
 			$this->conf_model->updateConference($value);
 			$data['message']='Conference updated!';
 		}
 			$data['conf']= $this->conf_model->get_conf();
-			
-			$this->load->view('header');
-			$this->load->view('conference/myConference',$data);
+			$data['title']='My Conferences';
+			$this->load->view('header',$data);
+			$this->load->view('conference/myConferences',$data);
 			$this->load->view('footer');
 	
 	}
 }
-
+public function editconference($id=null){
+	
+	
+	$data['conf']= $this->conf_model->retrieve_conf($id);
+	
+	$data['title']='Edit Conference';
+	$this->load->view('header',$data);
+	$this->load->view('conference/newConference', $data);
+	$this->load->view('footer');
+	}
 
 	public function deleteconference($id=null){
 	
-	
 	$this->conf_model->deleteconference($id);
 	$data['conf']= $this->conf_model->get_conf();
+	$data['title']='My Conferences';
 	$data['message']='Conference Deleted!';
-	$this->load->view('header');
+	$this->load->view('header',$data);
 	$this->load->view('conference/myConferences', $data);
 	$this->load->view('footer');
 	}
+	public function customNameValidation($str){
+	if(!empty($this->input->post('name'))){
+		  $length = strlen($this->input->post('name'));
+		if( $length>=2 ){
+			return true;
+		}
+	}
+	return false;
+}
 }
 
 
